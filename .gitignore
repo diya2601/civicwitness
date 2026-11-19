@@ -1,0 +1,32 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets: NEVER push these
+.env
+*.pem
+*.key
+credentials.json
+
+# Datasets and trained models (too big for GitHub)
+ml/data/
+*.h5
+*.pt
+*.pth
+*.keras
+
+# Terraform state (contains secrets) and cache
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
