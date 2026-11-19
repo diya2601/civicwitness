@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 app = FastAPI()
@@ -27,3 +27,14 @@ def create_complaint(complaint: ComplaintCreate):
     }
     complaints.append(new_complaint)
     return new_complaint
+@app.get("/complaints")
+def list_complaints():
+    return complaints
+
+
+@app.get("/complaints/{complaint_id}")
+def get_complaint(complaint_id: int):
+    for c in complaints:
+        if c["id"] == complaint_id:
+            return c
+    raise HTTPException(status_code=404, detail="Complaint nahi mili")
